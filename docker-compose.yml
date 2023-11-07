@@ -1,0 +1,13 @@
+version: '3'
+name: my_data
+services:
+  solr:
+    image: solr
+    ports:
+     - "8983:8983"
+    volumes:
+      - "./solrdata:/var/solr"
+      - "./mydata:/mydata"
+    command:
+      - solr-precreate
+      - my_data
