@@ -667,8 +667,18 @@
   <requestHandler name="/select" class="solr.SearchHandler">
     <lst name="defaults">
       <str name="echoParams">explicit</str>
+      <str name="df">course_title</str>
       <int name="rows">10</int>
+      <str name="spellcheck.dictionary">file</str>
+      <str name="spellcheck">on</str>
+      <str name="spellcheck.count">10</str>
+      <str name="spellcheck.extendedResults">true</str>
+      <str name="spellcheck.collate">true</str>
+      <str name="spellcheck.collateExtendedResults">true</str>
     </lst>
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
   </requestHandler>
 
   <!-- A request handler that returns indented JSON by default -->
@@ -696,7 +706,7 @@
     -->
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
 
-    <str name="queryAnalyzerFieldType">text_general</str>
+    <!-- <str name="queryAnalyzerFieldType">text_general</str> -->
 
     <!-- Multiple "Spell Checkers" can be declared and used by this
          component
@@ -743,10 +753,10 @@
       <str name="sourceLocation">words_alpha.txt</str>
       <str name="characterEncoding">UTF-8</str>
       <str name="spellcheckIndexDir">./spellcheckerFile</str>
-      <!-- optional elements with defaults
+      <!-- optional elements with defaults -->
       <str name="distanceMeasure">org.apache.lucene.search.spell.LevenshteinDistance</str>
       <str name="accuracy">0.5</str>
-      -->
+      <!-- -->
     </lst>
   </searchComponent>
 
